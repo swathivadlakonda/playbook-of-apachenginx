@@ -1,0 +1,40 @@
+inventory file syntax.........
+
+[ubuntu]
+ubuntu1 ansible_user=swathivadlakonda
+ubuntu2 ansible_user=swathivadlakonda
+[ubuntu:vars]
+ansible_become=true
+ansible_sudo_password=swathi
+
+
+
+
+
+if you get sudo passwd error the u have to type this following command in inventory file
+
+ubuntu1 | FAILED! => {
+    "msg": "Missing sudo password"
+}
+ubuntu2 | FAILED! => {
+    "msg": "Missing sudo password"
+}
+
+ansible_sudo_password=swathi{which ever u gave the password to your user that password u have to give here}
+and also some time u might get error like sudoers 
+
+
+  ubuntu2 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    }, 
+    "changed": false, 
+    "module_stderr": "Shared connection to ubuntu2 closed.\r\n", 
+    "module_stdout": "\r\nswathivadlakonda is not in the sudoers file.  This incident will be
+ reported.\r\n", 
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", 
+    "rc": 
+
+
+    for this error u need to add ur user in sudoers group
+       useradd -aG google-sudoers swathivadlakonda(username)
