@@ -1,0 +1,17 @@
+---
+ - hosts: ubuntu1
+   sudo: yes
+   name: play1
+   tasks:
+    - name: install apache
+      apt: name=apache2 state=latest
+    - name: adding website
+      script: hello.sh
+ - hosts: ubuntu2
+   sudo: yes
+   name: play2
+   tasks:
+    - name: install nginx
+      apt: name=nginx state=latest
+~                                                                                            
+~                                             
